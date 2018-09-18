@@ -89,6 +89,7 @@
         <button class="btn btn-danger" id="img-delete"> Delete your image </button>
     </div>
 </div>
+</div>
 <!-- table choose shirt  -->
 <div class="shirt-form card bg-white" id="table-shirt">
     <div class="card-header">Choose your shirt</div>
@@ -115,6 +116,7 @@
     </div>
     
 </div>
+</div>
 
 <div id="billPopup" class="modal">
     <div class="modal-content">
@@ -123,9 +125,19 @@
             
         </div>
         <br>
-         <p class="tag" id="total" style="text-align:left;font-size:16px;">Total:</p>
+        <label id="total">Total:</label>
         
-         <div class="bill-content">
+        <button type="button" class="btn btn-danger" id="btn-next" title="">
+            <p class="custom-text">Next</p>
+        </button>
+    </div>
+</div>
+
+<div id="infoPopup" class="modal">
+    <div class="modal-content">
+        <span id="close_info" class="close">&times;</span>
+        <br>
+       <div class="bill-content">
            <div class="row">
                <div class="col">
                     <label class="label">First name (recipient):</label>
@@ -167,7 +179,7 @@
                 <input type="radio" name="method" value="2" /> Paypal
             </label>
             <label class="method">
-                <input type="radio" name="method" value="3"/> Ngân Lượng
+                <input type="radio" name="method" value="3"/>Ngân Lượng
             </label>
         </form>
         <br>
@@ -175,4 +187,5 @@
             <p class="custom-text">Confirm</p>
         </button>
     </div>
+</div>
 </div>

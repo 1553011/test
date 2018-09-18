@@ -13,11 +13,7 @@ $(document).ready(function () {
         //window.location='/design?image='+$(this).parent().parent().find('img').attr('src');
         e.preventDefault();
         var id= $(this).parent().parent().parent().data("id");
-        var userid= $(this).parent().parent().parent().parent().data("userid");
-        if(userid)
-          window.location.href='/design/'+userid+'/'+id;
-        else
-          window.location.href='/users';
+        window.location.href='/design/'+id;
         // //console.log(id);
         // var urls='/design';
         // $.ajax({

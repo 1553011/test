@@ -18,7 +18,7 @@ $(".nav-label").mousedown(function () {
   $(".nav-label").css("color", "#08588c");
   $(this).css("background-color", "#08588c");
   $(this).css("color", "#fff");
-  if ($(this).attr("id") == "nav-dashboard"||$(this).attr("id") == "nav-bills") {
+  if ($(this).attr("id") == "nav-dashboard") {
     $('.search-tool').hide();
   }
   else {

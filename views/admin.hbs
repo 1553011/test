@@ -118,7 +118,7 @@
 					<p>Phone: {{phone}}</p>
 					<p>Address: {{address}}</p>
 					<div class="form-group">
-						<select class="form-control status" data-id="{{id}}" style="width:200px;">
+						<select class="form-control status" data-id="{{id}}">
 							{{#if isEnable}}
 							<option>Enable</option>
 							<option>Disable</option>
@@ -154,24 +154,18 @@
 					<img src="{{image}}" height="100" width="100" alt="Card image cap">
 				</div> --}}
 				<div class="bill col-9">
-					<h5 style="text-align: left;">#Order {{id}}<h5>
-					
-                    <p class="tag" style="text-align: left;margin:0px;">{{price}} VND</p>
-					<h6 style="font-size:12px;">Username: {{name}}</h6>
-                    <h6 style="font-size:12px;">Created at: {{createdAt}}</h6>
-                    <h6 style="font-size:12px;">Recipient: {{lastname}} {{firstname}}</h6>
-                    <h6 style="font-size:12px;">Phone: {{phone}}</h6>
-                    <h6 style="font-size:12px;">Address: {{address}}, {{city}}, {{state}}, {{countrycode}} </h6>
-                    <h6 style="font-size:12px;">Postal code: {{postalcode}}</h6>
+					<h5 style="text-align: left;">{{name}}
+						<h5>
+							<p class="tag" style="text-align: left;margin:0px;">{{price}} VND</p>
+							<h6 style="font-size:10px;">Created at: {{createdAt}}</h6>
 				</div>
 				<div class="bill col-2">
 					{{#if isPaid}}
 					<h6 style="font-size:20px;text-align: center; color:#009ddc">Paid</h6>
 					{{else}}
 					<h6 style="font-size:20px;text-align: center; color:#009ddc">Not Paid</h6>
-					{{/if}}
 				</div>
-				
+				{{/if}}
 				
 			</div>
 			
@@ -236,13 +230,13 @@
 				Shirt Name
 			</label>
 			<br>
-			<input type="text" class="form-control" id="change_name"  style="height:50px;">
+			<input type="text" class="form-control" id="change_name" placeholder="Enter shirt name" name="name" style="height:50px;">
 			<br>
 			<label class="label">
 				Shirt Price
 			</label>
 			<br>
-			<input type="number" class="form-control" id="change_price" style="height:50px;">
+			<input type="number" class="form-control" id="change_price" placeholder="Enter shirt price (VND)" name="price" style="height:50px;">
 			<br>
 
 			<br>

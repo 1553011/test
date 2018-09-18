@@ -308,23 +308,33 @@ $(document).ready(function () {
             
         });
     })
+
+    $("#btn-next").click(function () {
+        $("#infoPopup").css("display", "block");
+        
+    });
+
     
     $("#btn-confirm").click(function () {
         var customShirts=[];
+        var total=parseInt("0");
         $("#bill-content .cart-allinfo").each(function(){
             var $itm = $(this);
             customShirts.push({
                 'name' : ($itm.children('div').children('h5').html()), 
                 'price' :($itm.children('div').children('p').attr("price")),  
-                'image' : ($itm.children('img').attr("src")),
-                'quantity' : ($itm.children('div').children('h6').attr("data-quantity"))
+                'image' : ($itm.children('img').attr("src"))
+                // 'image' : "test"
             });
+            total=total+parseInt($itm.children('div').children('p').attr("price"));
         })
         var shirts='{ "a": '+ JSON.stringify(customShirts)+'}';
-
+        $("#total").html("Total: "+total);
+        //ajax call to save image inside folder
         var userId=$("#btn-save").attr("data-id");
         var userName=$("#btn-save").attr("data-name");
         var userEmail=$("#btn-save").attr("data-email");
+
         var firstname=$("#edt_firstname").val();
         var lastname=$("#edt_lastname").val();
         var countrycode=$("#edt_countrycode").val();
@@ -334,7 +344,15 @@ $(document).ready(function () {
         var city=$("#edt_city").val();
         var address=$("#edt_address").val();
         var method=$('input[name=method]:checked').val();
-        var total=$("#total").attr("data-total");
+        console.log("first name:"+firstname);
+        console.log("last name:"+lastname);
+        console.log("country code:"+countrycode);
+        console.log("postal code:"+postalcode);
+        console.log("state:"+state);
+        console.log("phone:"+phone);
+        console.log("city:"+city);
+        console.log("address:"+address);
+        console.log("method:"+method);
         $.ajax({
             url: '/design/order',
             dataType: "json",
@@ -358,6 +376,7 @@ $(document).ready(function () {
             success: function (response) {   
                 console.log(response.billId);
                 if (method=="1"){
+                    console.log("method:"+method);                    
                     window.location.href="../checkout/cod/"+userId+"/"+response.billId;
                 }
                 else{
@@ -373,6 +392,15 @@ $(document).ready(function () {
                             method:method
                         },
                         success: function (response) {   
+                            console.log(response);
+                            // $.ajax({
+                            //     url: response.link,
+                            //     type: 'get',
+                            //     headers: {
+                            //         "X-XSS-Protection":"1",
+                            //         "mode":"block"
+                            //     }
+                            // });
                             window.location.href=response.link;
                         }
                     });
@@ -397,14 +425,13 @@ $(document).ready(function () {
                     +'<div class="shirt-info">'
                         +'<h5>'+nameShirt+'</h5>'
                         +'<p class="tag" price="'+priceShirt +'" >'+priceShirt+'VND</p>'
-                        +'<h6 data-quantity="'+quantity+'"> QTY: '+quantity+'</h6>' 
+                        +'<h6> QTY: '+quantity+'</h6>' 
                     +'</div>'
                 +'</div>')
             total=total+parseFloat($itm.children('.shirt-info').children('p').attr("price"))*
             parseFloat($itm.children('.tool-cart').children('h5').html());
         })
         $("#total").html("Total: "+total);
-        $("#total").attr("data-total",total);
         if (total>0)
             $("#billPopup").css("display", "block");
     });

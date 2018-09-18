@@ -52,9 +52,6 @@ $(document).ready(function () {
         $("#orderPopup").css("display","none");
     });
 
-    $("#close-change-password").click(function () {
-        $("#changePassword").css("display","none");
-    });
 
     $("#close_pay").click(function () {
         $("#payPopup").css("display","none");

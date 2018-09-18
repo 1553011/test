@@ -70,26 +70,21 @@
                 <div class="bill col-9 bill-info">
                     <h5 style="text-align: left;">#Order {{id}}<h5>
                     <p class="tag" style="text-align: left;margin:0px;">{{price}} VND</p>
-                    <h6 style="font-size:12px;">Created at: {{createdAt}}</h6>
-                    <h6 style="font-size:12px;">Recipient: {{lastname}} {{firstname}}</h6>
-                    <h6 style="font-size:12px;">Phone: {{phone}}</h6>
-                    <h6 style="font-size:12px;">Address: {{address}}, {{city}}, {{state}}, {{countrycode}} </h6>
-                    <h6 style="font-size:12px;">Postal code: {{postalcode}}</h6>
-                    <div class="shirts" style="display:none;">
-                        {{#each CustomShirts}}
-                            <div class="card-bill row" data-name="{{name}}" data-price="{{price}}">
-                                <div class="bill-image col-2">
-                                    <img class="img-info" src="{{image}}"  height="100" width="100" alt="">
-                                </div>
-                                <div class="bill col-9">
-                                <h5 style="text-align: left;">{{name}}</h5>
-                                <p style="text-align: left;" class="tag">{{vnprice}} VNĐ</p>
-                                <h6 style="font-size:10px;">Created at: {{createdAt}}</h6>
-                                <h6 style="font-size:10px;">QTY: {{quantity}}</h6>
-                                </div>
+                    <h6 style="font-size:10px;">Created at: {{createdAt}}</h6>
+                      <div class="shirts" style="display:none;">
+                    {{#each CustomShirts}}
+                        <div class="card-bill row" data-name="{{name}}" data-price="{{price}}">
+                            <div class="bill-image col-4">
+                                <img class="img-info" src="{{image}}"  height="100" width="100" alt="">
                             </div>
-                        {{/each}}
-                    </div>
+                            <div class="bill col-7">
+                            <h5 style="text-align: left;">{{name}}</h5>
+                            <p style="text-align: left;" class="tag">{{price}} VNĐ</p>
+                            <h6 style="font-size:10px;">Created at: {{createdAt}}</h6>
+                            </div>
+                        </div>
+                    {{/each}}
+                </div>
                 </div>
                 <div class="bill col-2">
                     {{#if isPaid}}
@@ -208,7 +203,7 @@
                 <input type="radio" name="method" value="2" /> Paypal
             </label>
             <label class="method">
-                <input type="radio" name="method" value="3"/> Ngân Lượng
+                <input type="radio" name="method" value="3"/>Ngân Lượng
             </label>
         </form>
         <br>

@@ -241,17 +241,12 @@ routes.get('/callback/:userId/:id/:method', (req, res) => {
 	asyncFunc = paypal.callbackPaypal(req, res);
 	if (asyncFunc) {
 		asyncFunc.then(() => {
-			if (res.locals.isSucceed){
-				console.log("checked out");
-				console.log("userId: "+req.params.userId);
-				console.log("billId: "+req.params.id);
-				billController.setPaidById(req.params.id,true,function(bill){
-					res.redirect('/order/'+req.params.userId);
-				});
-			}
-			else{
-				res.sendFile(__dirname + "/public/web/err.html");
-			}
+			console.log("checked out");
+			console.log("userId: "+req.params.userId);
+			console.log("billId: "+req.params.id);
+			billController.setPaidById(req.params.id,true,function(bill){
+				res.redirect('/order/'+req.params.userId);
+			});
 		})
 		.catch((err) => {
 			res.send(err);

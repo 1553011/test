@@ -57,23 +57,20 @@ router.post('/delete', function (req, res) {
 
 router.post('/upload', function (req, res) {
 
-    // var base64Data = req.body.imagedata.replace(/^data:image\/png;base64,/, "");
-    // var filename= (new Date().getTime()).toString(36) + ".png";
-    // // //console.log(req.body.id);
-    // customController.create(req.body.id,req.body.name,"/upload/"+filename,req.body.price,function(customShirts){
+    var base64Data = req.body.imagedata.replace(/^data:image\/png;base64,/, "");
+    var filename= (new Date().getTime()).toString(36) + ".png";
+    // //console.log(req.body.id);
+    customController.create(req.body.id,req.body.name,"/upload/"+filename,req.body.price,function(customShirts){
         
-    //     res.sendStatus(201);
-    //     res.end();
-    // });
-    
-    // require("fs").writeFileSync("./public/upload/"+filename, base64Data, 'base64', function(err) {
-    //     console.log(err);
-    // });
-   
-    customController.create(req.body.id,req.body.name,req.body.imagedata,req.body.price,function(customShirts){
         res.sendStatus(201);
         res.end();
     });
+    
+    require("fs").writeFileSync("./public/upload/"+filename, base64Data, 'base64', function(err) {
+        console.log(err);
+    });
+    
+    //res.render('/cart');
 });
 
 router.post('/order', function (req, res) {
@@ -106,18 +103,14 @@ router.post('/order', function (req, res) {
             var sname=value.name;
             var price=value.price;
             var image=value.image;
-            // var base64Data = image.replace(/^data:image\/png;base64,/, "");
-            // var filename= (new Date().getTime()).toString(36) + ".png";
+            var base64Data = image.replace(/^data:image\/png;base64,/, "");
+            var filename= (new Date().getTime()).toString(36) + ".png";
            
-            // customController.create(bill.id,userId,sname,"/upload/"+filename,price,function(customShirts){
+            customController.create(bill.id,userId,sname,"/upload/"+filename,price,function(customShirts){
                 
-            // });
-            // require("fs").writeFileSync("./public/upload/"+filename, base64Data, 'base64', function(err) {
-            //     console.log(err);
-            // });
-
-            customController.create(bill.id,userId,sname,image,price,value.quantity,function(customShirts){
-                
+            });
+            require("fs").writeFileSync("./public/upload/"+filename, base64Data, 'base64', function(err) {
+                console.log(err);
             });
         });
         res.json({'billId':bill.id})

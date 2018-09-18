@@ -2,7 +2,7 @@ var controller = {};
 
 var models = require('../models');
 
-controller.create = function (billId,userId,name, image,price,quantity, callback) {
+controller.create = function (billId,userId,name, image,price, callback) {
     var us=(price/22000).toFixed(2).replace(/./g, function(c, i, a) {
         return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
     });
@@ -17,7 +17,7 @@ controller.create = function (billId,userId,name, image,price,quantity, callback
             UserId: userId,
             BillId: billId,
             description: 'shirt',
-            quantity:quantity,
+            quantity: 1,
             tax: '0.00',
             sku: 'shirt',
             currency: 'USD'

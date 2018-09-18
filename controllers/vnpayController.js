@@ -13,7 +13,7 @@ controller.checkoutVNPay=function(req, res) {
 	const checkoutData = res.locals.checkoutData;
 	checkoutData.returnUrl =`http://${req.headers.host}/checkout/callback/`+req.body.userId
 	+'/'+req.body.billId+'/3';
-	checkoutData.cancelUrl = `http://${req.headers.host}/order/`+req.body.userId;
+	checkoutData.cancelUrl = `http://${req.headers.host}/`;
 	checkoutData.orderInfo = 'Demo NodeJS Payment';
 	checkoutData.locale = checkoutData.locale === 'en' ? 'en' : 'vi';
 	checkoutData.paymentType = '1';
