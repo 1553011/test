@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <title>Hello, world!</title>
+
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/design.css">
+    <link rel="stylesheet" href="css/fontselect-alternate.css">
+    <link rel="stylesheet" href="css/bootstrap-colorpicker.min.css">
+    <link rel="stylesheet" href="css/bootstrap-colorpicker-plus.css">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery.fontselect.js"></script>
+    <script src="js/bootstrap-colorpicker.min.js"></script>
+    <script src="js/bootstrap-colorpicker-plus.js"></script>
+    <script src="js/design.js"></script>
+    <script src="js/interact.min.js"></script>
+    <script src="js/html2canvas.min.js"></script>
+    
+ 
+</head>
+
+<body>
+    <!--Navigation -->
+    <nav class="navbar navbar-expand-md  navbar-light bg-light">
+        <a class="navbar-brand abs" id="logo" href="index.html">
+            <img src="image/logo.png" width="100" height="100" class="d-inline-block align-top" alt="A">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <a class="nav-link " href="index.html">
+                <p class="color-blue">HOME</p>
+            </a>
+            <a class="nav-link" href="design.html">
+                <p class="color-blue">DESIGN</p>
+            </a>
+            <a class="nav-link" href="login.html">
+                <p class="color-blue">LOGIN</p>
+            </a>
+
+            <div id="container-search">
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn-search" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <!-- t-shirt image -->
+        <div class="pos-image" >
+            <img src="image/shirt-2.jpg" id="img-main" width="550px" height="550px" alt="">
+            <div class="square-line">         
+                <p id="text-upload"></p>                          
+                <img src="" class="img-fuild ui-widget-content" id="img-upload" alt="">
+            </div>
+            <div id="test"></div>
+        </div>
+        
+  	    <div class="box">
+    	    <div class="dragger"></div>
+        </div>
+        <!-- group button -->
+        <div class="btn-group menu">
+            <button type="button" class="btn  btn-outline-primary"  style="background:#009ddc;color:#fff;"id="btn-shirt">
+                <p class="custom-text">Choose Shirt</p>
+
+            </button>
+            <button type="button" class="btn  btn-outline-primary" id="btn-text">
+                <p class="custom-text">Add Text</p>
+            </button>
+            <button type="button" class="btn  btn-outline-primary"  style="background:#009ddc;color:#fff;" id="btn-image">
+                <p class="custom-text">Add Image</p>
+            </button>
+            <button type="button" class="btn btn-danger" id="btn-save">
+                <p class="custom-text">Save</p>
+            </button>
+        </div>
+
+        <!-- table input text -->
+        <div class="image-form card bg-white" id="table-text" style="display:none;">
+            <div class="card-header">Edit your text</div>
+            <div class="card-body">
+                <label for="text">
+                    <p>Design by your style</p>
+                </label>
+                <textarea class="form-control" rows="3" id="text"></textarea>
+                <div class="custom-text-area">
+                    <input id="font" type="text" />
+                    <p style="margin-top:10px;">Select color:</p>
+                    <div class="btn-group btn-group-sm colorpickerplus-dropdown" id="demo4">
+                        <button type="button" class="btn btn-default dropdown-toggle" style="width:50px;" data-toggle="dropdown">
+                            <span class="color-fill-icon dropdown-color-fill-icon"></span>&nbsp;
+                            <b class="caret"></b>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li class="disabled">
+                                <div class="colorpickerplus-container"></div>
+                            </li>
+
+                        </ul>
+                    </div>
+
+
+                    <button class="btn btn-danger" id="text-delete"> Delete your text </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- table upload image  -->
+    <div class="image-form card bg-white" id="table-image">
+        <div class="card-header" >Upload your own image</div>
+        <div class="card-body">
+            <p>All image types accepted</p>
+            <form class="form-inline">
+                <input type="text" class="form-control" id="file-name" style="width:220px;" disabled="disabled">
+                <label class="btn btn-outline-primary" style="background:#009ddc;color:#fff;" for="my-file-selector" >
+                    <input type="file" id="my-file-selector" accept="image/*" style="display:none;" onchange='uploadFile(this)'> Browse
+                </label>
+            </form>
+
+            <button class="btn btn-outline-primary btn-upload" style="background:#009ddc;color:#fff;"
+             id="upload" onclick="loadImage()" disabled="disabled"> Upload now </button>
+            <button class="btn btn-danger" id="img-delete"> Delete your image </button>
+        </div>
+    </div>
+    </div>
+
+    <!-- table choose shirt  -->
+    <div class="shirt-form card bg-white" id="table-shirt">
+        <div class="card-header">Choose your shirt</div>
+        <div class="card-body shirt-body">
+            <div class="shirt-allinfo">
+                <img class="img-info" src="image/shirt-2.jpg" height="100" width="100" alt="">
+                <div class="shirt-info">
+                    <h5> Áo thun cổ tròn</h5>
+                    <p class="tag">200.000d</p>
+                </div>
+            </div>
+            <div class="shirt-allinfo">
+                <img class="img-info" src="image/shirt-3.jpg" height="100" width="100" alt="">
+                <div class="shirt-info">
+                    <h5> Áo thun cổ tròn</h5>
+                    <p class="tag">200.000d</p>
+                </div>
+            </div>
+            <div class="shirt-allinfo">
+                <img class="img-info" src="image/shirt-4.jpg" height="100" width="100" alt="">
+                <div class="shirt-info">
+                    <h5> Áo thun cổ tròn</h5>
+                    <p class="tag">200.000d</p>
+                </div>
+            </div>
+            <div class="shirt-allinfo">
+                <img class="img-info" src="image/shirt-5.jpg" height="100" width="100" alt="">
+                <div class="shirt-info">
+                    <h5> Áo thun cổ tròn</h5>
+                    <p class="tag">200.000d</p>
+                </div>
+            </div>
+            <div class="shirt-allinfo">
+                <img class="img-info" src="image/shirt-6.jpg" height="100" width="100" alt="">
+                <div class="shirt-info">
+                    <h5> Áo thun cổ tròn</h5>
+                    <p class="tag">200.000d</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+    </div>
+    <!-- results  -->
+
+
+    <!--<img src="image/delete.png" style="width:20px;height:20px;"> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+</body>
+
+
+</html>

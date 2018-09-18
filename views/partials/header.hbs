@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-md  navbar-light bg-light">
+  <a class="navbar-brand abs" id="logo" href="/">
+    <img src="/image/logo.png" width="100" height="100" class="d-inline-block align-top" alt="A">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <a class="nav-link " href="/">
+      <p class="color-blue">HOME</p>
+    </a>
+    {{#if user}}
+      <a class="nav-link" href="/design/{{user.id}}">
+      <p class="color-blue">DESIGN</p>
+      </a>
+    {{else}}
+      <a class="nav-link" href="/users">
+        <p class="color-blue">DESIGN</p>
+      </a>
+    {{/if}}
+  
+    
+    {{#if user}}
+    <div class="dropdown">
+      
+      {{#if user.name}}
+          <button onclick="myFunction()" class="dropbtn">Hi, {{user.name}}</button>
+      {{else}}
+           <button onclick="myFunction()" class="dropbtn">Hi, {{user.email}}</button>
+      {{/if}}
+      
+      <div id="myDropdown" class="dropdown-content">
+        <a href="/order/{{user.id}}">Order</a>
+        {{#if user.isAdmin}}
+        <a href="/admin">Admin</a>
+        {{/if}}   
+        <a href="/users/logout">Log Out</a>
+      </div>
+    {{else}}
+      <a class="nav-link" href="/users">
+        <p class="color-blue">LOGIN</p>
+      </a>
+    {{/if}}
+  </div>
+
+
+    {{!-- <div id="container-search">
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn-search" type="submit">Search</button>
+      </form>
+    </div> --}}
+  </div>
+</nav>

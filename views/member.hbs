@@ -1,0 +1,220 @@
+<div class="user">
+    <div class="card hovercard">
+        <div class="card-background">
+            <img class="card-bkimg" alt="" src="/image/bg.jpg">
+        </div>
+        <div class="useravatar">
+            <img alt="" src="/image/person_flat.png">
+        </div>
+        <div class="card-info">
+            {{#if user.name}}
+                <span class="card-title">{{user.name}}</span>
+            {{else}}
+                <span class="card-title">{{user.email}}</span>
+            {{/if}}
+        </div>
+    </div>
+</div>
+{{#if error_message}}
+    <div class="alert alert-danger">
+        <strong>Danger! </strong>{{error_message}}
+    </div>  
+{{/if}}
+
+{{#if success_message}}
+    <div class="alert alert-success">
+        <strong>Success! </strong> {{success_message}}
+    </div> 
+{{/if}}
+<div class="span1">
+    <h3>Information</h3>
+    <div id="box-info" class="box" style="background-color:#fff;" data-id="{{user.id}}">
+        <div class="content-wrap">
+            <label >Name</label><br>
+            {{#if user.name}}
+            <label id="name" class="txt">{{user.name}}</label>
+            {{else}}
+            <label id="name" class="txt">None</label>
+            {{/if}}
+            <br>
+            <label >Phone</label><br>
+            {{#if user.phone}}
+            <label id="phone" class="txt">{{user.phone}}</label>
+            {{else}}
+            <label id="phone" class="txt">None</label>
+            {{/if}}
+            <br>
+            <label>Address</label><br>
+            {{#if user.address}}
+            <label id="address" class="txt">{{user.address}}</label>
+            {{else}}
+            <label id="address" class="txt">None</label>
+            {{/if}}
+        </div>
+    </div>
+    <div class="btn_update">
+        <input class="btn-primary btn_account" type="submit" value="Update information" 
+        id="btn_update">
+
+        <input class="btn-primary btn_account" type="submit" value="Change password" 
+        id="btn_change_password">
+    </div>
+</div>
+    <div class="span2">
+        <h3>Orders</h3>
+            {{#each user.Bills}}
+            <div class="card-bill row" data-toggle="modal" data-target="#cartPopup" >
+                {{!-- <div class="bill-image">
+                    <img src="{{image}}" height="100" width="100" alt="Card image cap">
+                </div> --}}
+                <div class="bill col-9 bill-info">
+                    <h5 style="text-align: left;">#Order {{id}}<h5>
+                    <p class="tag" style="text-align: left;margin:0px;">{{price}} VND</p>
+                    <h6 style="font-size:12px;">Created at: {{createdAt}}</h6>
+                    <h6 style="font-size:12px;">Recipient: {{lastname}} {{firstname}}</h6>
+                    <h6 style="font-size:12px;">Phone: {{phone}}</h6>
+                    <h6 style="font-size:12px;">Address: {{address}}, {{city}}, {{state}}, {{countrycode}} </h6>
+                    <h6 style="font-size:12px;">Postal code: {{postalcode}}</h6>
+                    <div class="shirts" style="display:none;">
+                        {{#each CustomShirts}}
+                            <div class="card-bill row" data-name="{{name}}" data-price="{{price}}">
+                                <div class="bill-image col-2">
+                                    <img class="img-info" src="{{image}}"  height="100" width="100" alt="">
+                                </div>
+                                <div class="bill col-9">
+                                <h5 style="text-align: left;">{{name}}</h5>
+                                <p style="text-align: left;" class="tag">{{vnprice}} VNĐ</p>
+                                <h6 style="font-size:10px;">Created at: {{createdAt}}</h6>
+                                <h6 style="font-size:10px;">QTY: {{quantity}}</h6>
+                                </div>
+                            </div>
+                        {{/each}}
+                    </div>
+                </div>
+                <div class="bill col-2">
+                    {{#if isPaid}}
+                    <h6 style="font-size:16px;text-align: center;">Paid</h6>
+                    {{else}}
+                    <h6 style="font-size:16px;text-align: center;">Not Paid</h6>
+                    <input class="btn-primary btn-pay" type="submit" value="Pay" 
+                    style="width:100%; font-size:20px;background-color:#009ddc;display:inline-block" data-billid="{{id}}">
+                    {{/if}}
+                </div>
+            </div>
+        {{/each}}
+        
+    </div>
+
+</div>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span id="close-update-account" class="close">&times;</span>
+        <div class="update_info">
+            
+            <label class="label">
+                 Name:
+            </label>
+            <br>
+            <br>
+            <input type="text" class="form-control" id="edt_name" placeholder="Enter your name" name="email" style="height:50px;">
+            <br>
+            <label class="label">
+                Phone:
+            </label>
+            <br>
+            <br>
+
+            <input type="text" class="form-control" id="edt_phone" placeholder="Enter your Phone Number" name="email" style="height:50px;">
+
+            <br>
+
+            <label class="label">
+                Address:
+            </label>
+            <br>
+            <br>
+            <input type="text" class="form-control" id="edt_address" placeholder="Enter your Address" name="email" style="height:50px;">
+            <br>
+            <div id="btn_update_account">
+                <input class="btn-primary" type="submit" value="Update" id="btn_update_box" style="height:50px; font-size:20px;background-color:#009ddc;">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Change password -->
+<div id="changePassword" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span id="close-change-password" class="close">&times;</span>
+         {{#if user.name}}
+            <form action="/order/password/{{user.id}}" method="post">
+                <span class="card-title"></span>
+        {{else}}
+        <form action="/password">
+            <form >
+        {{/if}}
+         <div class="update_info">
+            <label class="label">Old Password:</label>
+            <br>
+            <br>
+            <input name="oldpassword" type="password" class="form-control" id="edt_old_pass" placeholder="Enter Old Password" style="height:50px;">
+            <br>
+            <label class="label">Password:</label>
+            <br>
+            <br>
+            <input name="password" type="password" class="form-control" id="edt_pass" placeholder="Enter new password" style="height:50px;">
+            <br>
+            <label class="label">Confirm Password:</label>
+            <br>
+            <br>
+            <input name="cfm_pwd" type="password" class="form-control" id="edt_confirm_pass" placeholder="Enter confirm password" style="height:50px;">
+            <br>
+            <div id="btn_change_password_2">
+                <input class="btn-primary" type="submit" value="Update" id="btn_update_box" style="height:50px; font-size:20px;background-color:#009ddc;">
+            </div>
+        </div>
+        </form>
+     
+    </div>
+</div>
+
+<div id="orderPopup" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span id="close-detail-order" class="close">&times;</span>
+        <div id="order-content">
+            
+        </div>
+    </div>
+</div>
+
+<div id="payPopup" class="modal">
+    <div class="modal-content">
+        <span id="close_pay" class="close">&times;</span>
+        <br>
+        <form name="method_form" onsubmit="return submitAnswers()">
+            <label class="label">Payment method:</label>
+            <br>
+            <label class="method">
+                <input type="radio" name="method" value="1" checked/> COD
+            </label>
+            <label class="method">
+                <input type="radio" name="method" value="2" /> Paypal
+            </label>
+            <label class="method">
+                <input type="radio" name="method" value="3"/> Ngân Lượng
+            </label>
+        </form>
+        <br>
+        <button type="button" class="btn btn-danger" id="btn-confirm" title="" data-id="{{user.id}}" data-email="{{user.email}}">
+            <p class="custom-text">Confirm</p>
+        </button>
+    </div>
+</div>
+

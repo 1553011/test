@@ -1,0 +1,272 @@
+{{#if user.isAdmin}}
+<div class="info">
+	<div class="span1">
+		<div class="useravatar">
+			<img alt="" src="/image/person_flat.png">
+		</div>
+		<hr class="nav-hr">
+		<label class="nav-label" id="nav-dashboard" onclick="showContent('dashboard')">DashBoard</label>
+		<hr class="nav-hr">
+		<label class="nav-label" id="nav-bills" onclick="showContent('bills')">Bill</label>
+		<hr class="nav-hr">
+		<label class="nav-label" id="nav-account" onclick="showContent('account')">User</label>
+
+		<hr class="nav-hr">
+		<label class="nav-label" id="nav-product" onclick="showContent('product')">Product</label>
+		<hr class="nav-hr">
+		<label class="nav-label" id="nav-mail" onclick="showContent('mail')">Contact Mail</label>
+	</div>
+	<div class="span2">
+		<div class="search-tool" style="display:none";>
+			<form class="form-inline my-2 my-lg-0" id="search">
+				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="txt_search">
+				<button class="btn-search" type="submit">Search</button>
+			</form>
+		</div>
+		<div class="content-menu dashboard">
+			<div class="row" style="margin-top:5%;margin-left:0.5%;">
+                    <div class="col-md-3">
+                        <div class="card p-30">
+                            <div class="media">
+                                <div class="media-left meida media-middle">
+                                    <span><i class="fa fa-usd f-s-40 color-primary"></i></span>
+                                </div>
+                                <div class="media-body ">
+                                    <h2 style="color:#08588c; ">{{revenue}}</h2>
+                                    <p class="m-b-0" style="font-size:20px;margin-left:20%;">Total Revenue</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card p-30">
+                            <div class="media">
+                                <div class="media-left meida media-middle">
+                                    <span><i class="fa fa-shopping-cart f-s-40 color-success"></i></span>
+                                </div>
+                                <div class="media-body">
+                                    <h2 style="color:#08588c;">{{totalBill}}</h2>
+                                    <p class="m-b-0" style="font-size:20px;margin-left:40%;">Bills</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card p-30">
+                            <div class="media">
+                                <div class="media-left meida media-middle">
+                                    <span><i class="fa fa-archive f-s-40 color-warning"></i></span>
+                                </div>
+                                <div class="media-body ">
+                                    <h2 style="color:#08588c">{{totalProduct}}</h2>
+                                    <p class="m-b-0" style="font-size:20px;margin-left:30%;">Products</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card p-30">
+                            <div class="media">
+                                <div class="media-left meida media-middle">
+                                    <span><i class="fa fa-user f-s-40 color-danger"></i></span>
+                                </div>
+                                <div class="media-body ">
+                                    <h2 style="color:#08588c">{{totalUser}}</h2>
+                                    <p class="m-b-0" style="font-size:20px;margin-left:30%;">Customer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				
+				<input type="text" id="daterange" style="margin-left:80%;width:200px;"/>
+				<canvas id="myChart" style='width="200px"; height="200px";'></canvas>
+
+
+		</div>
+		<div class="content-menu product" >
+			<div class="container-create">
+				<button class="btn-create" id="btn_create">+ Create</button>
+			</div>
+			<hr>
+			
+			{{#each shirts}}
+			<div class="product-card" data-id="{{id}}">
+
+				<div class="card-image">
+					<img src="{{image}}" height="100" width="100" alt="Card image cap">
+				</div>
+				<div class="product-info">
+					<h5>{{name}}</h5>
+					<p class="tag">{{price}} VND</p>
+				</div>
+			</div>
+			{{/each}}
+			<ul id="pagination-demo"></ul>	
+		</div>
+
+
+		<div class="content-menu account" >
+			<hr> {{#each users}} 
+			{{#unless isAdmin}}
+
+			<div class="user" data-id="{{id}}">
+
+				<div class="product-info">
+					<h3 style="color: #08588c;">{{email}}</h3>
+					<p>Name: {{name}}</p>
+					<p>Phone: {{phone}}</p>
+					<p>Address: {{address}}</p>
+					<div class="form-group">
+						<select class="form-control status" data-id="{{id}}" style="width:200px;">
+							{{#if isEnable}}
+							<option>Enable</option>
+							<option>Disable</option>
+							{{else}}
+							<option>Disable</option>
+							<option>Enable</option>
+							{{/if}}
+						</select>
+					</div>
+				</div>
+
+			</div>
+			{{/unless}} 
+			{{/each}}
+		</div>
+		<div class="content-menu mail">
+			<hr> {{#each mails}}
+			<div class="usermail" data-id="{{id}}">
+				<div class="product-info">
+					<h5 style='color: #08588c;'>{{email}}</h5>
+				</div>
+			</div>
+			{{/each}}
+		</div>
+
+		<div class="content-menu bills">
+			<hr> 
+			
+			{{#each bills}}
+			<div class="card-bill row" data-toggle="modal" data-target="#cartPopup" data-id="{{id}}">
+				{{!--
+				<div class="bill-image">
+					<img src="{{image}}" height="100" width="100" alt="Card image cap">
+				</div> --}}
+				<div class="bill col-9">
+					<h5 style="text-align: left;">#Order {{id}}<h5>
+					
+                    <p class="tag" style="text-align: left;margin:0px;">{{price}} VND</p>
+					<h6 style="font-size:12px;">Username: {{name}}</h6>
+                    <h6 style="font-size:12px;">Created at: {{createdAt}}</h6>
+                    <h6 style="font-size:12px;">Recipient: {{lastname}} {{firstname}}</h6>
+                    <h6 style="font-size:12px;">Phone: {{phone}}</h6>
+                    <h6 style="font-size:12px;">Address: {{address}}, {{city}}, {{state}}, {{countrycode}} </h6>
+                    <h6 style="font-size:12px;">Postal code: {{postalcode}}</h6>
+				</div>
+				<div class="bill col-2">
+					{{#if isPaid}}
+					<h6 style="font-size:20px;text-align: center; color:#009ddc">Paid</h6>
+					{{else}}
+					<h6 style="font-size:20px;text-align: center; color:#009ddc">Not Paid</h6>
+					{{/if}}
+				</div>
+				
+				
+			</div>
+			
+			{{/each}} 
+			<ul id="pagination-bills"></ul>	
+		</div>
+		
+	</div>
+</div>
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+	<!-- Modal content -->
+	<div class="modal-content">
+
+		<span class="close">&times;</span>
+		<h2>Create Shirt</h2>
+		<div class="update_info">
+			<label class="label">
+				Shirt Name
+			</label>
+			<br>
+
+			<input type="text" class="form-control" id="edt_name" placeholder="Enter shirt name" name="name" style="height:50px;">
+			<br>
+			<label class="label">
+				Shirt Price
+			</label>
+			<br>
+
+			<input type="number" class="form-control" id="edt_price" placeholder="Enter shirt price (VND)" name="price" style="height:50px;">
+			<br>
+			<label class="label">
+				Shirt Image
+			</label>
+			<br>
+
+			<form class="form-inline">
+				<input type="text" class="form-control" id="file-name" style="width:90%;" disabled="disabled">
+				<label class="btn btn-outline-primary" style="background:#009ddc;color:#fff;" for="my-file-selector">
+					<input type="file" id="my-file-selector" accept="image/*" style="display:none;" onchange='uploadFile(this)'> Browse
+				</label>
+			</form>
+			<br>
+			<br>
+			<input class="btn-primary" type="submit" value="Create" id="btn_update_shirt" disabled>
+		</div>
+	</div>
+</div>
+
+
+<!-- The Modal -->
+<div id="shirt_modal" class="modal">
+	<!-- Modal content -->
+	<div class="modal-content">
+
+		<span class="close">&times;</span>
+		<h2>Info shirt</h2>
+		<div class="update_info">
+			<label class="label">
+				Shirt Name
+			</label>
+			<br>
+			<input type="text" class="form-control" id="change_name"  style="height:50px;">
+			<br>
+			<label class="label">
+				Shirt Price
+			</label>
+			<br>
+			<input type="number" class="form-control" id="change_price" style="height:50px;">
+			<br>
+
+			<br>
+			<button type="button" class="btn btn-primary" id="btn_change_shirt">Change Info</button>
+			<button type="button" class="btn btn-danger" id="btn_delete_shirt">Delete shirt</button>
+
+		</div>
+	</div>
+</div>
+
+<div id="orderPopup" class="modal">
+	
+	<!-- Modal content -->
+	<div class="content">
+		<span id="close-detail-order" class="close">&times;</span>
+		<div id="order-content">
+
+		</div>
+		<button type="button" class="btn btn-primary" id="btn_delete_bill" style="margin-left:45%;">Delete bill</button>
+	</div>
+	
+</div>
+
+
+{{else}}
+<p style="margin-top:20%;text-align:center; color:#08588c; font-size:30px;"> This is an admin page of website mTshirt.</p>
+{{/if}}

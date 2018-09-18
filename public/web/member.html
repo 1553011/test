@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Member</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	 crossorigin="anonymous">
+	<!-- styles -->
+	<link href="css/index.css" rel="stylesheet">
+	<link href="css/member.css" rel="stylesheet">
+</head>
+
+<body class="login-bg">
+	<nav class="navbar navbar-expand-md  navbar-light bg-light">
+		<a class="navbar-brand abs" id="logo" href="index.html">
+			<img src="image/logo.png" width="100" height="100" class="d-inline-block align-top" alt="A">
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+		 aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<a class="nav-link " href="index.html">
+				<p class="color-blue">HOME</p>
+			</a>
+			<a class="nav-link" href="design.html">
+				<p class="color-blue">DESIGN</p>
+			</a>
+
+			<div class="dropdown">
+				<button onclick="myFunction()" class="dropbtn">Hi, Ngọc Trinh</button>
+				<div id="myDropdown" class="dropdown-content">
+				  <a href="login.html">Log Out</a>
+				</div>
+			  </div>
+
+			<div id="container-search">
+				<form class="form-inline my-2 my-lg-0">
+					<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+					<button class="btn-search" type="submit">Search</button>
+				</form>
+			</div>
+		</div>
+	</nav>
+
+
+	<div class="user">
+		<div class="card hovercard">
+			<div class="card-background">
+				<img class="card-bkimg" alt="" src="image/image4.jpg">
+			</div>
+			<div class="useravatar">
+				<img alt="" src="image/image4.jpg">
+			</div>
+			<div class="card-info">
+				<span class="card-title">Ngọc Trinh</span>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="info">
+		<div class="span1">
+			<h3>Thông tin tài khoản</h3>
+			<hr>
+			<label class="label">First name:</label>
+			<label id="first_name" class="txt">Trinh</label>
+			<br>
+			<label class="label">Last name:</label>
+			<label id="last_name" class="txt">Ngọc</label>
+			<br>
+			<label class="label">Phone:</label>
+			<label id="phone" class="txt">09xxxxxxxxxxx</label>
+			<br>
+			<label class="label">Address:</label>
+			<label id="address" class="txt">Q7, TPHCM, Viet Nam</label>
+			<div id="btn_update_account">
+				<input class="btn-primary" type="submit" value="Cập nhật thông tin" id="btn_update" style="height:50px; font-size:20px;background-color:#009ddc;">
+			</div>
+		</div>
+		<div class="span2">
+
+			<h3>Đơn hàng</h3>
+			<div class="card-bill">
+				<div class="bill-image">
+					<img src="image/shirt-1.jpeg" height="100" width="100" alt="Card image cap">
+				</div>
+				<div class="bill">
+					<h5>Áo sơ mi nam
+						<h5>
+							<p class="tag">200.000 VND</p>
+				</div>
+			</div>
+
+			<div class="card-bill">
+				<div class="bill-image">
+					<img src="image/shirt-1.jpeg" height="100" width="100" alt="Card image cap">
+				</div>
+				<div class="bill">
+					<h5>Áo sơ mi nam
+						<h5>
+							<p class="tag">200.000 VND</p>
+				</div>
+			</div>
+
+			<div class="card-bill">
+				<div class="bill-image">
+					<img src="image/shirt-1.jpeg" height="100" width="100" alt="Card image cap">
+				</div>
+				<div class="bill">
+					<h5>Áo sơ mi nam
+						<h5>
+							<p class="tag">200.000 VND</p>
+				</div>
+			</div>
+			<div class="card-bill">
+				<div class="bill-image">
+					<img src="image/shirt-1.jpeg" height="100" width="100" alt="Card image cap">
+				</div>
+				<div class="bill">
+					<h5>Áo sơ mi nam
+						<h5>
+							<p class="tag">200.000 VND</p>
+				</div>
+			</div>
+
+			<div class="card-bill">
+				<div class="bill-image">
+					<img src="image/shirt-1.jpeg" height="100" width="100" alt="Card image cap">
+				</div>
+				<div class="bill">
+					<h5>Áo sơ mi nam
+						<h5>
+							<p class="tag">200.000 VND</p>
+				</div>
+			</div>
+
+			<div class="card-bill">
+				<div class="bill-image">
+					<img src="image/shirt-1.jpeg" height="100" width="100" alt="Card image cap">
+				</div>
+				<div class="bill">
+					<h5>Áo sơ mi nam
+						<h5>
+							<p class="tag">200.000 VND</p>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="footer">
+		<div class="container-fuild bg-light">
+			<div class="row">
+				<div class="col-4 py-3" style="text-align:center;">
+					<h4 class="text" style="color:#08588c;">About us</h4>
+					<p class="py-3">Just work for deadline :((</p>
+				</div>
+				<div class="col-5 py-3">
+					<h4 class="text" style="color:#08588c;">Join us to get more discount</h4>
+					<div class="form-inline py-3">
+						<input type="email" class="form-control" id="email" placeholder="Enter your email address" name="email" style="height:50px;">
+						<input class="btn-primary" type="submit" value="Join now" style="height:50px; font-size:20px;background-color:#009ddc;">
+					</div>
+				</div>
+				<div class="col-3 py-3">
+					<h4 class="text" style="color:#08588c;">Follow us</h4>
+					<div class="py-3">
+						<a href="https://www.facebook.com/" title="Facebook" target="_blank">
+							<img src="image/face1.png" alt="AA">
+						</a>
+						<span style="padding-left:10px;"></span>
+						<a href="https://www.mail.google.com/" title="Mail" target="_blank">
+							<img src="image/mail1.png" alt="AA">
+
+						</a>
+						<span style="padding-left:10px;"></span>
+						<a href="https://www.youtube.com/" title="Youtube" target="_blank">
+							<img src="image/youtube1.png" alt="AA">
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<footer>
+			<p style="text-align:center; padding-top:5px">Copyright © 2018 Team bán đồ sida</p>
+		</footer>
+
+		<!-- The Modal -->
+		<div id="myModal" class="modal">
+
+			<!-- Modal content -->
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<div class="update_info">
+					<label class="label">
+						First name:
+					</label>
+					<br>
+					<br>
+
+					<input type="text" class="form-control" id="edt_first_name" placeholder="Enter your First Name" name="email" style="height:50px;">
+
+					<br>
+					<label class="label">
+						Last name:
+					</label>
+					<br>
+					<br>
+
+					<input type="text" class="form-control" id="edt_last_name" placeholder="Enter your Last Name" name="email" style="height:50px;">
+
+					<br>
+
+					<label class="label">
+						Phone:
+					</label>
+					<br>
+					<br>
+
+					<input type="text" class="form-control" id="edt_phone" placeholder="Enter your Phone Number" name="email" style="height:50px;">
+
+					<br>
+
+					<label class="label">
+						Address:
+					</label>
+					<br>
+					<br>
+					<input type="text" class="form-control" id="edt_address" placeholder="Enter your Address" name="email" style="height:50px;">
+					<br>
+					<div id="btn_update_account">
+						<input class="btn-primary" type="submit" value="Cập nhật thông tin" 
+						id="btn_update_box" 
+						style="height:50px; font-size:20px;background-color:#009ddc;">
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://code.jquery.com/jquery.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="bootstrap/js/bootstrap.min.js"></script>
+		<script src="js/member.js"></script>
+</body>
+
+</html>

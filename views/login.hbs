@@ -1,0 +1,93 @@
+{{#if error_message}}
+    <div class="alert alert-danger">
+        <strong>Danger! </strong>{{error_message}}
+    </div>  
+{{/if}}
+
+{{#if success_message}}
+    <div class="alert alert-success">
+        <strong>Success! </strong> {{success_message}}
+    </div> 
+{{/if}}
+
+ {{#if errors}}
+   <div class="alert alert-success">
+        <strong>Success! </strong>  {{errors}}
+    </div> 
+{{/if}}
+
+<div class="login-wrapper">
+    <div class="box">
+        <div class="content-wrap">
+            <form method="post" action="/users/login">
+                <h2>Log in to your account</h2>
+                <label for="email">Email</label>
+                <input class="form-control" type="text" placeholder="E-mail address" id="email" name="email">
+                <label for="psw">Password</label>
+                <input class="form-control" type="password" placeholder="Password" id="psw" name="password">
+                <input type="hidden"  name="_csrf" value="{{crsfToken}}">
+                <div class="action">
+                   
+                    <button type="submit" class="btn btn_log">Login</button>
+                </div>
+            </form>
+
+            {{!-- <div class="division">
+                <hr class="left">
+                <span>or</span>
+                <hr class="right">
+            </div> --}}
+            {{!-- <div class="social">
+                <a class="face_login" href="https://www.facebook.com/v2.12/dialog/oauth?
+						client_id=2034640846824624
+						&redirect_uri=http://trendingofficial.hol.es/
+						&state={st=state123abc,ds=123456789}">
+                    <span class="face_icon">
+                        <img src="/image/facebook.png" alt="fb">
+                    </span>
+                    <span class="text">Sign in with Facebook</span>
+                </a>
+
+            </div> --}}
+        </div>
+    </div>
+</div>
+<form id="signupForm" method="post" action="/users/register">
+    <div class="login-wrapper">
+        <div class="box">
+            <div class="content-wrap">
+                <h2>Don't have an account? Create one now!</h2>
+                <div class="row">
+                    <div class="col">
+                        <label for="sign_up_name">Name</label>
+                        <input class="form-control" type="text" placeholder="Name" id="sign_up_name" name="name">
+                        <label for="sign_up_phone">Phone</label>
+                        <input class="form-control" type="text" placeholder="Phone" id="sign_up_phone" name="phone">
+                        <label for="sign_up_address">Address</label>
+                        <input class="form-control" type="text" placeholder="Address" id="sign_up_address" name="address">
+
+
+                    </div>
+                    <div class="col">
+                        <label for="sign_up_email">Email</label>
+                        <input class="form-control" type="text" placeholder="E-mail address" id="sign_up_email" name="email">
+                        <label for="sign_up_psw">Password</label>
+                        <input class="form-control" type="password" placeholder="Password" id="sign_up_psw" name="password">
+                        <label for="sign_up_confirmed_psw">Confirm password</label>
+                        <input class="form-control" type="password" placeholder="Confirm Password" id="sign_up_confirmed_psw" name="cfm_pwd">
+                    </div>
+                </div>
+                
+                <input type="hidden"  name="_csrf" value="{{crsfToken}}">
+                <div class="g-recaptcha" data-sitekey="6LdnrVYUAAAAACYv9MUpOQyJ-GYMYreJWY69NLjN"></div>
+                <div class="action">
+                    <button type="submit" class="btn btn_log" id="btn-signup">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+</form>
+
+

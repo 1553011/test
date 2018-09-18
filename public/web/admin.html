@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	  
+    <title>Admin</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	
+	<link href="css/index.css" rel="stylesheet">
+	<link href="css/admin.css" rel="stylesheet">
+	
+  </head>
+  <body>
+	<nav class="navbar navbar-expand-md  navbar-light bg-light" >
+		<a class="navbar-brand abs" id="logo" href="#"><img src="image/logo.png" width="100" height="100" class="d-inline-block align-top" alt="A"></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		  <span class="navbar-toggler-icon"></span>
+		</button>
+	
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<a class="nav-link " href="index.html" >
+				<p class="color-blue">HOME</p> 
+				</a>
+				<a class="nav-link" href="design.html">
+				<p class="color-blue">DESIGN</p></a>
+				<div class="dropdown">
+					<button onclick="myFunction()" class="dropbtn">Hi, Admin</button>
+					<div id="myDropdown" class="dropdown-content">
+					  <a href="login.html">Log Out</a>
+					</div>
+				</div>
+	
+		  <div id="container-search">
+			<form class="form-inline my-2 my-lg-0">
+			  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+			  <button class="btn-search" type="submit">Search</button>
+			</form>
+		  </div>
+		</div>
+	   </nav>  
+	   
+		   <div class="info">
+				<div class="span1">				
+					<div class="useravatar">
+						<img alt="" src="image/image4.jpg">
+					</div>
+					<hr class="nav-hr">
+				<label class="nav-label" id="nav-dashboard"> Dashboard</label>
+					<hr class="nav-hr">
+					<label class="nav-label" id="nav-product">Product</label>
+					<hr class="nav-hr">
+					<label class="nav-label" id="nav-customer">Customer</label>
+				</div>					
+				<div class="span2">
+					<div class="search-tool">
+							<form class="form-inline my-2 my-lg-0">
+									<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+									<button class="btn-search" type="submit">Search</button>
+							</form>
+					</div>
+					<div class="container-create">
+						<button class="btn-create">+ Add Shirt</button>											
+					</div>
+					<hr>
+					<div class="product-card" id="test">
+						<div class="card-image">
+							<img  src="image/shirt-1.jpeg" height="100" width="100" alt="Card image cap">
+						</div>
+						<div class="product-info">
+							<h5>Áo sơ mi nam<h5>
+							<p class="tag">200.000 VND</p>
+						</div>
+					</div>
+					<div id="list">
+						<div class="product-card">
+							<div class="card-image">
+								<img  src="image/shirt-1.jpeg" height="100" width="100" alt="Card image cap">
+							</div>
+							<div class="product-info">
+								<h5>Áo sơ mi nam<h5>
+								<p class="tag">200.000 VND</p>
+							</div>
+						</div>
+						<div class="product-card">
+							<div class="card-image">
+								<img  src="image/shirt-1.jpeg" height="100" width="100" alt="Card image cap">
+							</div>
+							<div class="product-info">
+								<h5>Áo sơ mi nam<h5>
+								<p class="tag">200.000 VND</p>
+							</div>
+						</div>
+						<div class="product-card">
+							<div class="card-image">
+								<img  src="image/shirt-1.jpeg" height="100" width="100" alt="Card image cap">
+							</div>
+							<div class="product-info">
+								<h5>Áo sơ mi nam<h5>
+								<p class="tag">200.000 VND</p>
+							</div>
+						</div>
+
+						<div class="product-card">
+							<div class="card-image">
+								<img  src="image/shirt-1.jpeg" height="100" width="100" alt="Card image cap">
+							</div>
+							<div class="product-info">
+								<h5>Áo sơ mi nam<h5>
+								<p class="tag">200.000 VND</p>
+							</div>
+						</div>
+					</div>
+				</div>
+		</div>
+			
+  
+	<div class="footer">
+			<div class="container-fuild bg-light">
+					<div class="row">
+						<div class="col-4 py-3" style="text-align:center;">
+						<h4 class="text" style="color:#08588c;">About us</h4>
+						<p class="py-3">Just work for deadline :((</p>
+						</div>
+						<div class="col-5 py-3 ">
+							<h4 class="text" style="color:#08588c;">Join us to get more discount</h4>
+							<div class="form-inline py-3">
+								<input type="email" class="form-control" id="email" placeholder="Enter your email address" name="email" style="height:50px;">
+								<input class="btn-primary" type="submit" value="Join now" style="height:50px; font-size:20px;background-color:#009ddc;">
+							</div>            
+						</div>
+						<div class="col-3 py-3 ">
+						<h4 class="text" style="color:#08588c;">Follow us</h4>
+						<div class="py-3">
+							<a href="https://www.facebook.com/" title="Facebook" target="_blank">
+							<img src="image/face1.png" alt="AA">
+							</a>
+							<span style="padding-left:10px;"></span>
+							<a href="https://www.mail.google.com/" title="Mail" target="_blank">
+							<img src="image/mail1.png" alt="AA">
+			
+							</a>
+							<span style="padding-left:10px;"></span>
+							<a href="https://www.youtube.com/" title="Youtube" target="_blank">
+							<img src="image/youtube1.png" alt="AA">
+							</a>
+						</div>
+						 
+						</div>
+					</div>
+				
+		</div>
+		<footer>
+				<p style="text-align:center; padding-top:5px">Copyright © 2018 Team bán đồ sida</p> 
+		</footer>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="js/custom.js"></script>
+	<script src="js/admin.js"></script>
+	
+  </body>
+</html>

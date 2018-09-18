@@ -1,0 +1,178 @@
+<div class="container">
+    <!-- t-shirt image -->
+    {{#unless  user}}
+    <div class="alert alert-danger alert-dismissible warn" >
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Warning!</strong>You must login to save your shirt
+    </div>
+    {{/unless }}
+    <div class="pos-image">
+        <img src="{{shirt.image}}" id="img-main" width="550px" height="550px" alt="" data-name="{{shirt.name}}" data-price="{{shirt.price}}">
+        <div class="square-line">
+            <p id="text-upload"></p>
+            <img src="" class="img-fuild ui-widget-content" id="img-upload" alt="">
+        </div>
+        <div id="test"></div>
+    </div>
+
+    
+    <!-- group button -->
+    <div class="btn-group menu">
+        <button type="button" class="btn  btn-outline-primary" style="background:#009ddc;color:#fff;" id="btn-shirt">
+            <p class="custom-text">Choose Shirt</p>
+
+        </button>
+        <button type="button" class="btn  btn-outline-primary" id="btn-text">
+            <p class="custom-text">Add Text</p>
+        </button>
+        <button type="button" class="btn  btn-outline-primary" id="btn-image">
+            <p class="custom-text">Add Image</p>
+        </button>
+        {{#if user}}
+        <button type="button" class="btn btn-danger" post="/upload" data-name="{{user.name}}" data-id="{{user.id}}" data-email="{{user.email}}" id="btn-save">
+            <p class="custom-text">Save</p>
+        </button>
+        {{else}}
+        <button type="button" class="btn btn-danger" id="btn-save" title="" disabled>
+            <p class="custom-text">              
+                Save</p>
+        </button>
+        
+        {{/if}}
+    </div>
+
+    <!-- table input text -->
+    <div class="image-form card bg-white" id="table-text" style="display:none;">
+        <div class="card-header">Edit your text</div>
+        <div class="card-body">
+            <label for="text">
+                <p>Design by your style</p>
+            </label>
+            <textarea class="form-control" rows="3" id="text"></textarea>
+            <div class="custom-text-area">
+                <input id="font" type="text" />
+                <p style="margin-top:10px;">Select color:</p>
+                <div class="btn-group btn-group-sm colorpickerplus-dropdown" id="demo4">
+                    <button type="button" class="btn btn-default dropdown-toggle" style="width:50px;" data-toggle="dropdown">
+                        <span class="color-fill-icon dropdown-color-fill-icon"></span>&nbsp;
+                        <b class="caret"></b>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li class="disabled">
+                            <div class="colorpickerplus-container"></div>
+                        </li>
+
+                    </ul>
+                </div>
+
+
+                <button class="btn btn-danger" id="text-delete"> Delete your text </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- table upload image  -->
+<div class="image-form card bg-white" id="table-image" style="display:none;">
+    <div class="card-header">Upload your own image</div>
+    <div class="card-body">
+        <p>All image types accepted</p>
+        <form class="form-inline">
+            <input type="text" class="form-control" id="file-name" style="width:220px;" disabled="disabled">
+            <label class="btn btn-outline-primary" style="background:#009ddc;color:#fff;" for="my-file-selector">
+                <input type="file" id="my-file-selector" accept="image/*" style="display:none;" onchange='uploadFile(this)'> Browse
+            </label>
+        </form>
+
+        <button class="btn btn-outline-primary btn-upload" style="background:#009ddc;color:#fff;" id="upload" onclick="loadImage()"
+            disabled="disabled"> Upload now </button>
+        <button class="btn btn-danger" id="img-delete"> Delete your image </button>
+    </div>
+</div>
+<!-- table choose shirt  -->
+<div class="shirt-form card bg-white" id="table-shirt">
+    <div class="card-header">Choose your shirt</div>
+    <div class="card-body shirt-body">
+        {{#each shirts}}
+        <div class="shirt-allinfo" data-name="{{name}}" data-price="{{price}}">
+            <img class="img-info" src="{{image}}"  height="100" width="100" alt="">
+            <div class="shirt-info">
+                <h5>{{name}}</h5>
+                <p class="tag">{{price}} VNĐ</p>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+
+</div>
+
+<div class="cart-form card bg-white" id="table-cart">
+    <div class="card-header">
+        <label > Cart</label>
+        <img id="btn-order" width="20px" height="20px" src="/image/check.png">
+    </div>
+    <div id="cart" class="card-body shirt-body">
+    </div>
+    
+</div>
+
+<div id="billPopup" class="modal">
+    <div class="modal-content">
+        <span id="close_bill">&times;</span>
+        <div id="bill-content">
+            
+        </div>
+        <br>
+         <p class="tag" id="total" style="text-align:left;font-size:16px;">Total:</p>
+        
+         <div class="bill-content">
+           <div class="row">
+               <div class="col">
+                    <label class="label">First name (recipient):</label>
+                    <input name="firstname" type="text" class="form-control" id="edt_firstname" placeholder="Enter first name" style="height:50px;">
+                    <br>
+                    <label class="label">Country code (2 digits):</label>
+                    <input name="countrycode" type="text" class="form-control" id="edt_countrycode" placeholder="Enter country code" style="height:50px;">
+                    <br>
+                     <label class="label">Postal code (5 digits):</label>
+                    <input name="postalcode" type="text" class="form-control" id="edt_postalcode" placeholder="Enter postal code" style="height:50px;">
+                    <br>
+               </div>
+               <div class="col">
+                    <label class="label">Last name (recipient):</label>
+                    <input name="lastname" type="text" class="form-control" id="edt_lastname" placeholder="Enter last name" style="height:50px;">
+                    <br>
+                     <label class="label">City:</label>
+                    <input name="city" type="text" class="form-control" id="edt_city" placeholder="Enter city" style="height:50px;">
+                    <br> 
+                    <label class="label">State (2 digits):</label>
+                    <input name="state" type="text" class="form-control" id="edt_state" placeholder="Enter state" style="height:50px;">
+                    <br>
+               </div>
+           </div>
+            <label class="label">Phone:</label>
+            <input name="phone" type="text" class="form-control" id="edt_phone" placeholder="Enter phone" style="height:50px;">
+            <br>
+            <label class="label">Address:</label>
+            <input name="address" type="text" class="form-control" id="edt_address" placeholder="Enter address" style="height:50px;">
+        </div>
+        <br>
+        <form name="method_form" onsubmit="return submitAnswers()">
+            <label class="label">Payment method:</label>
+            <br>
+            <label class="method">
+                <input type="radio" name="method" value="1" checked/> COD
+            </label>
+            <label class="method">
+                <input type="radio" name="method" value="2" /> Paypal
+            </label>
+            <label class="method">
+                <input type="radio" name="method" value="3"/> Ngân Lượng
+            </label>
+        </form>
+        <br>
+        <button type="button" class="btn btn-danger" id="btn-confirm" title="">
+            <p class="custom-text">Confirm</p>
+        </button>
+    </div>
+</div>
