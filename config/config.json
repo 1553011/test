@@ -4,7 +4,10 @@
     "password": "",
     "database": "postgres",
     "host": "159.89.46.71",
-    "dialect": "postgres"
+    "dialect": "postgres",
+	"dialectOptions": {
+      "ssl": true
+    }
   }
   ,
   "test": {
@@ -19,6 +22,9 @@
     "password": "",
     "database": "postgres",
     "host": "159.89.46.71",
-    "dialect": "postgres"
+    "dialect": "postgres",
+	"dialectOptions": {
+      "ssl": true
+    }
   }
 }
