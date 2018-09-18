@@ -1,0 +1,138 @@
+body {
+  color: gray;
+  font-family: Oswald, -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
+}
+
+.card-img-top {
+  position: relative;
+}
+
+/*.card-img-top:hover{
+    transform: rotateY(180deg);
+  }*/
+
+.row .col-md-3 .card:hover {
+  border: #08588c 1px solid !important;
+}
+
+.row .col-md-3 .card:hover .btn-group {
+  display: block;
+  position: absolute;
+  left: 70px;
+  top: 100px;
+  margin: 0 auto;
+}
+
+.row .col-md-3 .card {
+  box-shadow: 0 0 5px black;
+}
+
+.row .btn-group {
+  display: none;
+}
+
+#myCarousel {
+  height: 800px;
+  position: relative;
+  margin-bottom: 40px;
+  overflow: hidden;
+}
+
+.carousel-item .img-fluid {
+  height: 800px;
+  width: 100%;
+}
+
+.instruction {
+  margin: 30px auto;
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.heading {
+  color: #08588c;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+
+
+.card-text {
+  margin-left: 30px;
+
+}
+
+h5 {
+  color: #585858;
+  text-align: center;
+}
+
+.tag {
+  line-height: 22px;
+  height: 22px;
+  font-size: 18px;
+  color: #f57224;
+  text-align: center;
+}
+
+.promo {
+  position: absolute;
+  top: 300px;
+
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #08588c;
+}
+
+.btn-color {
+  background-color: #009ddc;
+  color: white;
+}
+
+.form-inline #email {
+  width: 400px;
+}
+
+.signup {
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+
+}
+
+.vertical-line {
+  border-right: #666 solid 1px;
+}
+
+.color-blue {
+  color: #08588c;
+  margin: 0px 20px;
+}
+
+#logo {
+  margin: -25px 10px;
+}
+
+.btn-search {
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
+  background-color: #fff;
+  border: 1px solid #08588c;
+  color: #08588c;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5%;
+  height: 30px;
+  font-size: 16px;
+}
+
+.nav-item {
+  margin: 0px;
+  width: fit-content;
+}
+
+#container-search {
+  text-align: end;
+}
